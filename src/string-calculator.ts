@@ -1,6 +1,6 @@
 export class StringCalculator {
   add(str_values: string): number {
-    const mask = new RegExp(',|\n');
+    const mask = new RegExp(',|\\n');
     const values = str_values.split(mask);
     if (values.length === 0) {
       return 0;
