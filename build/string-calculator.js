@@ -3,7 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.StringCalculator = void 0;
 class StringCalculator {
     add(str_values) {
-        const values = str_values.split(',');
+        const mask = new RegExp(',|\n');
+        const values = str_values.split(mask);
         if (values.length === 0) {
             return 0;
         }

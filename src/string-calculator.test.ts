@@ -24,3 +24,12 @@ describe('Part 2 Test', () => {
     expect(stringCalculator.add('0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0')).toBe(0);
   });
 });
+
+describe('Part 2 Test', () => {
+  it('should return 10', () => {
+    expect(stringCalculator.add('4\n6')).toBe(10);
+  });
+  it('should return 6', () => {
+    expect(stringCalculator.add('1\n2,3')).toBe(6);
+  });
+});
