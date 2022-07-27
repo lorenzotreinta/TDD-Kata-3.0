@@ -24,12 +24,20 @@ describe('Part 2 Test', () => {
         expect(stringCalculator.add('0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0')).toBe(0);
     });
 });
-describe('Part 2 Test', () => {
+describe('Part 3 Test', () => {
     it('should return 10', () => {
         expect(stringCalculator.add('4\n6')).toBe(10);
     });
     it('should return 6', () => {
         expect(stringCalculator.add('1\n2,3')).toBe(6);
+    });
+});
+describe('Part 4 Test', () => {
+    it('should return 3', () => {
+        expect(stringCalculator.add('//;\n1;2')).toBe(3);
+    });
+    it('should return 10', () => {
+        expect(stringCalculator.add('//$$\n1$$2$$3\n4')).toBe(10);
     });
 });
 //# sourceMappingURL=string-calculator.test.js.map
