@@ -64,3 +64,12 @@ describe('Part 6 Test', () => {
     expect(stringCalculator.add('4,5,10000,99999,1')).toBe(10);
   });
 });
+
+describe('Part 7 Test', () => {
+  it('should return 6', () => {
+    expect(stringCalculator.add('//[***]\n1***2***3')).toBe(6);
+  });
+  it('should return 10', () => {
+    expect(stringCalculator.add('//$%^\n5$%^2$%^3')).toBe(10);
+  });
+});
