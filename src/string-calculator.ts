@@ -1,3 +1,5 @@
+import {setFlagsFromString} from 'v8';
+
 export class StringCalculator {
   add(str_values: string): number {
     const valuesObj = {str_values: str_values};
@@ -9,6 +11,7 @@ export class StringCalculator {
       return 0;
     }
     const sum = values.reduce((prev_sum, cur_val) => {
+      if (cur_val[0] === '-') this.callNegError(values);
       return prev_sum + +cur_val;
     }, 0);
     return sum;
@@ -26,5 +29,19 @@ export class StringCalculator {
     }
     const mask = new RegExp('\n|[' + delim + ']');
     return mask;
+  }
+
+  callNegError(values) {
+    let neg_error_message = 'Negatives not allowed: ';
+    for (let i = 0; i < values.length; i++) {
+      const cur_val = values[i];
+      if (cur_val[0] == '-') {
+        if (neg_error_message !== 'Negatives not allowed: ') {
+          neg_error_message += ',';
+        }
+        neg_error_message += cur_val;
+      }
+    }
+    throw new Error(neg_error_message);
   }
 }

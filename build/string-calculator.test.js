@@ -40,4 +40,16 @@ describe('Part 4 Test', () => {
         expect(stringCalculator.add('//$$\n1$$2$$3\n4')).toBe(10);
     });
 });
+describe('Part 5 Test', () => {
+    test('should throw "Negatives not allowed: -1,-2" error', () => {
+        expect(() => {
+            stringCalculator.add("-1,-2");
+        }).toThrowError("Negatives not allowed: -1,-2");
+    });
+    test('should throw "Negatives not allowed: -2,-2" error', () => {
+        expect(() => {
+            stringCalculator.add("1,-2,4,-2,10");
+        }).toThrowError("Negatives not allowed: -2,-2");
+    });
+});
 //# sourceMappingURL=string-calculator.test.js.map
