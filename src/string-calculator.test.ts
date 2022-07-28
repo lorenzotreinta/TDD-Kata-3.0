@@ -39,7 +39,7 @@ describe('Part 4 Test', () => {
     expect(stringCalculator.add('//;\n1;2')).toBe(3);
   });
   it('should return 10', () => {
-    expect(stringCalculator.add('//$$\n1$$2$$3\n4')).toBe(10);
+    expect(stringCalculator.add('//$\n1$2$3\n4')).toBe(10);
   });
 });
 
