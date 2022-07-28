@@ -5,14 +5,18 @@ export class StringCalculator {
     const valuesObj = {str_values: str_values};
     const mask = this.getDelimMask(valuesObj);
     str_values = valuesObj.str_values;
-    console.log(mask);
     const values = str_values.split(mask);
     if (values.length === 0) {
       return 0;
     }
+
     const sum = values.reduce((prev_sum, cur_val) => {
       if (cur_val[0] === '-') this.callNegError(values);
-      return prev_sum + +cur_val;
+      if (+cur_val <= 1000) {
+        return prev_sum + +cur_val;
+      } else {
+        return prev_sum;
+      }
     }, 0);
     return sum;
   }

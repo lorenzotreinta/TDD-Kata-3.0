@@ -55,3 +55,12 @@ describe('Part 5 Test', () => {
     }).toThrowError('Negatives not allowed: -2,-2');
   });
 });
+
+describe('Part 6 Test', () => {
+  it('should return 2', () => {
+    expect(stringCalculator.add('2,1999')).toBe(2);
+  });
+  it('should return 10', () => {
+    expect(stringCalculator.add('4,5,10000,99999,1')).toBe(10);
+  });
+});
