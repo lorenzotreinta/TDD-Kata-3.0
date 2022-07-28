@@ -6,11 +6,13 @@ export class StringCalculator {
     const mask = this.getDelimMask(valuesObj);
     console.log(mask);
     str_values = valuesObj.str_values;
+    console.log(str_values);
     const values = str_values.split(mask);
     if (values.length === 0) {
       return 0;
     }
 
+    console.log(values);
     const sum = values.reduce((prev_sum, cur_val) => {
       if (cur_val[0] === '-') this.callNegError(values);
       if (+cur_val <= 1000) {
@@ -32,6 +34,7 @@ export class StringCalculator {
       delim = valuesObj.str_values.slice(2, delim_end_idx);
       valuesObj.str_values = valuesObj.str_values.slice(delim_end_idx + 1);
     }
+    delim = delim.replace(/\]\[/g, ']|[');
     const mask = new RegExp('[' + delim + '|\n]');
     return mask;
   }

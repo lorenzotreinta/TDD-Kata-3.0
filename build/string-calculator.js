@@ -5,6 +5,7 @@ class StringCalculator {
     add(str_values) {
         const valuesObj = { str_values: str_values };
         const mask = this.getDelimMask(valuesObj);
+        console.log(mask);
         str_values = valuesObj.str_values;
         const values = str_values.split(mask);
         if (values.length === 0) {
@@ -30,7 +31,8 @@ class StringCalculator {
             delim = valuesObj.str_values.slice(2, delim_end_idx);
             valuesObj.str_values = valuesObj.str_values.slice(delim_end_idx + 1);
         }
-        const mask = new RegExp('\n|[' + delim + ']');
+        delim = delim.replace("][", "]|[");
+        const mask = new RegExp('[' + delim + '|\n]');
         return mask;
     }
     callNegError(values) {

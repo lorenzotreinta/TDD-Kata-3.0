@@ -73,3 +73,15 @@ describe('Part 7 Test', () => {
     expect(stringCalculator.add('//$%^\n5$%^2$%^3')).toBe(10);
   });
 });
+
+describe('Part 8 & 9 Test', () => {
+  it('should return 6', () => {
+    expect(stringCalculator.add('//[*][%]\n1*2%3')).toBe(6);
+  });
+  it('should return 6', () => {
+    expect(stringCalculator.add('//[*^%][%@]\n1*^%2%@3')).toBe(6);
+  });
+  it('should return 20', () => {
+    expect(stringCalculator.add('//[*@%][%@][#]\n1*@%2%@3\n4#10')).toBe(20);
+  });
+});
