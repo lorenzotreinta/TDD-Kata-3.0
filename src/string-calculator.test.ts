@@ -82,6 +82,8 @@ describe('Part 8 & 9 Test', () => {
     expect(stringCalculator.add('//[*^%][%@]\n1*^%2%@3')).toBe(6);
   });
   it('should return 20', () => {
-    expect(stringCalculator.add('//[*@%][%@][#]\n1*@%2%@3\n4#10')).toBe(20);
+    expect(stringCalculator.add('//[*@^%][%@][#][^]\n1*@^%2%@3\n4#10^9')).toBe(
+      29
+    );
   });
 });

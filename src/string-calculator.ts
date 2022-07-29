@@ -34,7 +34,8 @@ export class StringCalculator {
       delim = valuesObj.str_values.slice(2, delim_end_idx);
       valuesObj.str_values = valuesObj.str_values.slice(delim_end_idx + 1);
     }
-    delim = delim.replace(/\]\[/g, ']|[');
+    delim = delim.replace(/\]\[/g, '|');
+    delim = delim.replace(/\[|\]/g, '');
     const mask = new RegExp('[' + delim + '|\n]');
     return mask;
   }
@@ -43,7 +44,7 @@ export class StringCalculator {
     let neg_error_message = 'Negatives not allowed: ';
     for (let i = 0; i < values.length; i++) {
       const cur_val = values[i];
-      if (cur_val[0] == '-') {
+      if (cur_val[0] === '-') {
         if (neg_error_message !== 'Negatives not allowed: ') {
           neg_error_message += ',';
         }
