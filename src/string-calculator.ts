@@ -1,18 +1,16 @@
-import {setFlagsFromString} from 'v8';
+import {Logger} from './logger';
 
 export class StringCalculator {
   add(str_values: string): number {
+    const logger = new Logger();
     const valuesObj = {str_values: str_values};
     const mask = this.getDelimMask(valuesObj);
-    console.log(mask);
     str_values = valuesObj.str_values;
-    console.log(str_values);
     const values = str_values.split(mask);
     if (values.length === 0) {
       return 0;
     }
 
-    console.log(values);
     const sum = values.reduce((prev_sum, cur_val) => {
       if (cur_val[0] === '-') this.callNegError(values);
       if (+cur_val <= 1000) {
@@ -21,6 +19,7 @@ export class StringCalculator {
         return prev_sum;
       }
     }, 0);
+    logger.write(sum);
     return sum;
   }
 
