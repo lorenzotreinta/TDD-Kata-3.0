@@ -1,4 +1,5 @@
 import {Logger} from './logger';
+import {Webservice} from './webservice';
 
 export class StringCalculator {
   add(str_values: string): number {
@@ -19,7 +20,11 @@ export class StringCalculator {
         return prev_sum;
       }
     }, 0);
-    logger.write(sum);
+    try {
+      logger.write(sum);
+    } catch (e) {
+      new Webservice().logError(e);
+    }
     return sum;
   }
 
