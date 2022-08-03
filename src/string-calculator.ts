@@ -1,9 +1,17 @@
+import {setFlagsFromString} from 'v8';
 import {Logger} from './logger';
 import {Webservice} from './webservice';
 
 export class StringCalculator {
+  logger: Logger;
+  webservice: Webservice;
+
+  constructor(logger: Logger, webservice: Webservice) {
+    this.logger = logger;
+    this.webservice = webservice;
+  }
+
   add(str_values: string): number {
-    const logger = new Logger();
     const valuesObj = {str_values: str_values};
     const mask = this.getDelimMask(valuesObj);
     str_values = valuesObj.str_values;
@@ -21,9 +29,9 @@ export class StringCalculator {
       }
     }, 0);
     try {
-      logger.write(sum);
+      this.logger.write(sum);
     } catch (e) {
-      new Webservice().logError(e);
+      this.webservice.logError(e);
     }
     return sum;
   }

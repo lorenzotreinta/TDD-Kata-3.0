@@ -1,6 +1,10 @@
 import {StringCalculator} from './string-calculator';
+import {Logger} from './logger';
+import {Webservice} from './webservice';
 
-const stringCalculator = new StringCalculator();
+const webservice = new Webservice();
+const logger = new Logger();
+const stringCalculator = new StringCalculator(logger, webservice);
 describe('Part 1 Test', () => {
   it('should return 0', () => {
     expect(stringCalculator.add('')).toBe(0);

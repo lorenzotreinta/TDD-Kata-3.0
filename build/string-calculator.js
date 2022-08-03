@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.StringCalculator = void 0;
 const logger_1 = require("./logger");
+const webservice_1 = require("./webservice");
 class StringCalculator {
     add(str_values) {
         const logger = new logger_1.Logger();
@@ -22,7 +23,12 @@ class StringCalculator {
                 return prev_sum;
             }
         }, 0);
-        logger.write(sum);
+        try {
+            logger.write(sum);
+        }
+        catch (e) {
+            new webservice_1.Webservice().logError(e);
+        }
         return sum;
     }
     getDelimMask(valuesObj) {

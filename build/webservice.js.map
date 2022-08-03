@@ -1,1 +1,1 @@
-{"version":3,"file":"webservice.js","sourceRoot":"","sources":["../src/webservice.ts"],"names":[],"mappings":";;;AAAA,MAAa,UAAU;IACnB,QAAQ,CAAC,KAAY;QACjB,OAAO,CAAC,GAAG,CAAC,KAAK,CAAC,OAAO,CAAC,CAAC;IAC/B,CAAC;CACJ;AAJD,gCAIC"}
+{"version":3,"file":"webservice.js","sourceRoot":"","sources":["../src/webservice.ts"],"names":[],"mappings":";;;AAAA,MAAa,UAAU;IACrB,QAAQ,CAAC,KAAK;QACZ,OAAO,CAAC,GAAG,CAAC,KAAK,CAAC,OAAO,CAAC,CAAC;IAC7B,CAAC;CACF;AAJD,gCAIC"}

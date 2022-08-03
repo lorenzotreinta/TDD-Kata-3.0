@@ -20,11 +20,17 @@ describe('Tests for 2.1', () => {
         const result = 10;
         const stringCalculator = new string_calculator_1.StringCalculator();
         stringCalculator.add(val);
-        expect(loggerWriteMock).toHaveBeenCalled();
         expect(loggerWriteMock).toHaveBeenCalledWith(result);
     });
 });
 describe('Tests for 2.2', () => {
+    test('webservice.logError logs an error to the console.', () => {
+        console.log = jest.fn();
+        const webservice = new webservice_1.Webservice();
+        const error = new Error();
+        webservice.logError(error);
+        expect(console.log).toHaveBeenCalledTimes(1);
+    });
     test('when logger() throws an error, webservice.logError is invoked to log it.', () => {
         const loggerErrorMock = jest
             .spyOn(logger_1.Logger.prototype, 'write')
@@ -35,8 +41,7 @@ describe('Tests for 2.2', () => {
         const stringCalculator = new string_calculator_1.StringCalculator();
         stringCalculator.add('');
         expect(loggerErrorMock).toHaveBeenCalled();
-        expect(webServiceMock).toHaveBeenCalled();
-        expect(webServiceMock).toBeCalledWith(TypeError);
+        expect(webServiceMock).toBeCalledWith(Error());
     });
 });
 //# sourceMappingURL=logger.test.js.map
