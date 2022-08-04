@@ -1,2 +1,3 @@
-# TDD-Kata-1.0
-Segunda iteración del ejercicio de TDD Kata 1 https://osherove.com/tdd-kata-1
+# TDD-Kata-2.0
+Implementación del ejercicio de TDD Kata 2 https://osherove.com/tdd-kata-2
+
