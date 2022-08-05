@@ -1,6 +1,4 @@
-export abstract class Webservice {
-  abstract logError(error);
-}
+import {Webservice} from './webservice';
 
 export class WebserviceMock extends Webservice {
   error;
@@ -12,11 +10,5 @@ export class WebserviceMock extends Webservice {
   logError(error) {
     this.error = error;
     return this.error;
-  }
-}
-
-export class ConsoleWebservice extends Webservice {
-  logError(error) {
-    console.log(error.message);
   }
 }

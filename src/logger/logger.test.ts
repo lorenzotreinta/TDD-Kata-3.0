@@ -1,6 +1,10 @@
-import {StringCalculator} from './string-calculator';
-import {LoggerParamMock, LoggerErrorMock, ConsoleLogger} from './logger';
-import {WebserviceMock, ConsoleWebservice} from './webservice';
+import {StringCalculator} from '../string_calculator/string-calculator';
+import {LogStringCalculator} from '../string_calculator/log-string-calculator';
+import {LoggerErrorMock} from './logger-error-mock';
+import {LoggerParamMock} from './logger-param-mock';
+import {ConsoleLogger} from './console-logger';
+import {WebserviceMock} from './webservice-mock';
+import {ConsoleWebservice} from './console-webservice';
 
 describe('Tests for 2.1', () => {
   test('loggerErrorMock.write should throw "Out of memory" error', () => {
@@ -25,13 +29,15 @@ describe('Tests for 2.1', () => {
   });
   test('stringCalculator.add() should call logger() with 10 for "2,3,5"', () => {
     const loggerMock = new LoggerParamMock();
+    const stringCalculator = new StringCalculator();
     const val = '2,3,5';
     const result = 10;
-    const stringCalculator = new StringCalculator(
+    const logStringCalculator = new LogStringCalculator(
+      stringCalculator,
       loggerMock,
       new ConsoleWebservice()
     );
-    stringCalculator.add(val);
+    logStringCalculator.add(val);
     expect(loggerMock.sum).toBe(result);
   });
 });
@@ -52,11 +58,13 @@ describe('Tests for 2.2', () => {
     const error = new Error('Out of memory');
     const loggerErrorMock = new LoggerErrorMock(error);
     const webServiceMock = new WebserviceMock();
-    const stringCalculator = new StringCalculator(
+    const stringCalculator = new StringCalculator();
+    const logStringCalculator = new LogStringCalculator(
+      stringCalculator,
       loggerErrorMock,
       webServiceMock
     );
-    stringCalculator.add('1,2');
+    logStringCalculator.add('1,2');
     expect(loggerErrorMock.error).toBe(error);
     expect(webServiceMock.error).toBe(error);
   });

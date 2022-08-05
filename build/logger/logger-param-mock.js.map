@@ -1,0 +1,1 @@
+{"version":3,"file":"logger-param-mock.js","sourceRoot":"","sources":["../../src/logger/logger-param-mock.ts"],"names":[],"mappings":";;;AAAA,qCAAgC;AAEhC,MAAa,eAAgB,SAAQ,eAAM;IAEzC;QACE,KAAK,EAAE,CAAC;QACR,IAAI,CAAC,GAAG,GAAG,IAAI,CAAC;IAClB,CAAC;IACD,KAAK,CAAC,GAAW;QACf,IAAI,CAAC,GAAG,GAAG,GAAG,CAAC;IACjB,CAAC;CACF;AATD,0CASC"}

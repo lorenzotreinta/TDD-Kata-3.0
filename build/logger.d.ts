@@ -8,7 +8,7 @@ export declare class LoggerParamMock extends Logger {
 }
 export declare class LoggerErrorMock extends Logger {
     error: Error;
-    constructor(error: any);
+    constructor(error: Error);
     write(sum: number): void;
 }
 export declare class ConsoleLogger extends Logger {

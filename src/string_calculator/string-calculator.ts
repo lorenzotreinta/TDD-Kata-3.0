@@ -1,15 +1,6 @@
-import {Logger} from './logger';
-import {Webservice} from './webservice';
+import {AbsStringCalculator} from './abstract-string-calculator';
 
-export class StringCalculator {
-  logger: Logger;
-  webservice: Webservice;
-
-  constructor(logger: Logger, webservice: Webservice) {
-    this.logger = logger;
-    this.webservice = webservice;
-  }
-
+export class StringCalculator extends AbsStringCalculator {
   add(str_values: string): number {
     const valuesObj = {str_values: str_values};
     const mask = this.getDelimMask(valuesObj);
@@ -27,12 +18,6 @@ export class StringCalculator {
         return prev_sum;
       }
     }, 0);
-    try {
-      this.logger.write(sum);
-    } catch (e) {
-      console.log(e);
-      this.webservice.logError(e);
-    }
     return sum;
   }
 

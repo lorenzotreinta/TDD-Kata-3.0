@@ -1,0 +1,1 @@
+{"version":3,"file":"logger-error-mock.js","sourceRoot":"","sources":["../../src/logger/logger-error-mock.ts"],"names":[],"mappings":";;;AAAA,qCAAgC;AAEhC,MAAa,eAAgB,SAAQ,eAAM;IAEzC,YAAY,KAAY;QACtB,KAAK,EAAE,CAAC;QACR,IAAI,CAAC,KAAK,GAAG,KAAK,CAAC;IACrB,CAAC;IACD,KAAK,CAAC,GAAW;QACf,MAAM,IAAI,CAAC,KAAK,CAAC;IACnB,CAAC;CACF;AATD,0CASC"}
