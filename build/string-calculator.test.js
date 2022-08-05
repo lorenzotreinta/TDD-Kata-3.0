@@ -1,7 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const string_calculator_1 = require("./string-calculator");
-const stringCalculator = new string_calculator_1.StringCalculator();
+const logger_1 = require("./logger");
+const webservice_1 = require("./webservice");
+const webservice = new webservice_1.ConsoleWebservice();
+const logger = new logger_1.ConsoleLogger();
+const stringCalculator = new string_calculator_1.StringCalculator(logger, webservice);
 describe('Part 1 Test', () => {
     it('should return 0', () => {
         expect(stringCalculator.add('')).toBe(0);

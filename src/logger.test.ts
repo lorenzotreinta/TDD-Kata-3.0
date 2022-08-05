@@ -1,46 +1,63 @@
 import {StringCalculator} from './string-calculator';
-import {Logger} from './logger';
-import {Webservice} from './webservice';
+import {LoggerParamMock, LoggerErrorMock, ConsoleLogger} from './logger';
+import {WebserviceMock, ConsoleWebservice} from './webservice';
 
 describe('Tests for 2.1', () => {
-  test('logger.write should not return', () => {
+  test('loggerErrorMock.write should throw "Out of memory" error', () => {
     const sum = 6;
-    const logger = new Logger();
-    expect(logger.write(sum)).toBeUndefined();
+    const error = new Error('Out of memory');
+    const loggerErrorMock = new LoggerErrorMock(error);
+    expect(() => {
+      loggerErrorMock.write(sum);
+    }).toThrowError('Out of memory');
+    expect(loggerErrorMock.error).toBe(error);
+  });
+  test('LoggerParamMock.write should not return and stores the .write() param', () => {
+    const sum = 6;
+    const loggerParamMock = new LoggerParamMock();
+    expect(loggerParamMock.write(sum)).toBeUndefined();
+    expect(loggerParamMock.sum).toBe(sum);
+  });
+  test('ConsoleLogger.write should not return', () => {
+    const sum = 6;
+    const consoleLogger = new ConsoleLogger();
+    expect(consoleLogger.write(sum)).toBeUndefined();
   });
   test('stringCalculator.add() should call logger() with 10 for "2,3,5"', () => {
-    const loggerWriteMock = jest
-      .spyOn(Logger.prototype, 'write')
-      .mockImplementation();
+    const loggerMock = new LoggerParamMock();
     const val = '2,3,5';
     const result = 10;
     const stringCalculator = new StringCalculator(
-      new Logger(),
-      new Webservice()
+      loggerMock,
+      new ConsoleWebservice()
     );
     stringCalculator.add(val);
-    expect(loggerWriteMock).toHaveBeenCalledWith(result);
+    expect(loggerMock.sum).toBe(result);
   });
 });
 
 describe('Tests for 2.2', () => {
-  test('webservice.logError should not return.', () => {
-    const webservice = new Webservice();
+  test('webserviceMock.logError should not return.', () => {
+    const webservice = new WebserviceMock();
+    const error = new Error();
+    expect(webservice.logError(error)).toBe(error);
+    expect(webservice.error).toBe(error);
+  });
+  test('ConsoleWebservice.logError should not return.', () => {
+    const webservice = new ConsoleWebservice();
     const error = new Error();
     expect(webservice.logError(error)).toBeUndefined();
   });
   test('when logger() throws an error, webservice.logError is invoked to log it.', () => {
-    const loggerErrorMock = jest
-      .spyOn(Logger.prototype, 'write')
-      .mockImplementationOnce(() => {
-        throw new Error();
-      });
-    const webServiceMock = jest.spyOn(Webservice.prototype, 'logError');
+    const error = new Error('Out of memory');
+    const loggerErrorMock = new LoggerErrorMock(error);
+    const webServiceMock = new WebserviceMock();
     const stringCalculator = new StringCalculator(
-      new Logger(),
-      new Webservice()
+      loggerErrorMock,
+      webServiceMock
     );
-    stringCalculator.add('');
-    expect(webServiceMock).toBeCalledWith(Error());
+    stringCalculator.add('1,2');
+    expect(loggerErrorMock.error).toBe(error);
+    expect(webServiceMock.error).toBe(error);
   });
 });

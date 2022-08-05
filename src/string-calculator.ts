@@ -1,4 +1,3 @@
-import {setFlagsFromString} from 'v8';
 import {Logger} from './logger';
 import {Webservice} from './webservice';
 
@@ -31,6 +30,7 @@ export class StringCalculator {
     try {
       this.logger.write(sum);
     } catch (e) {
+      console.log(e);
       this.webservice.logError(e);
     }
     return sum;

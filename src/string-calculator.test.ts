@@ -1,9 +1,9 @@
 import {StringCalculator} from './string-calculator';
-import {Logger} from './logger';
-import {Webservice} from './webservice';
+import {ConsoleLogger} from './logger';
+import {ConsoleWebservice} from './webservice';
 
-const webservice = new Webservice();
-const logger = new Logger();
+const webservice = new ConsoleWebservice();
+const logger = new ConsoleLogger();
 const stringCalculator = new StringCalculator(logger, webservice);
 describe('Part 1 Test', () => {
   it('should return 0', () => {

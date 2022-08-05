@@ -1,11 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.StringCalculator = void 0;
-const logger_1 = require("./logger");
-const webservice_1 = require("./webservice");
 class StringCalculator {
+    constructor(logger, webservice) {
+        this.logger = logger;
+        this.webservice = webservice;
+    }
     add(str_values) {
-        const logger = new logger_1.Logger();
         const valuesObj = { str_values: str_values };
         const mask = this.getDelimMask(valuesObj);
         str_values = valuesObj.str_values;
@@ -24,10 +25,11 @@ class StringCalculator {
             }
         }, 0);
         try {
-            logger.write(sum);
+            this.logger.write(sum);
         }
         catch (e) {
-            new webservice_1.Webservice().logError(e);
+            console.log(e);
+            this.webservice.logError(e);
         }
         return sum;
     }
